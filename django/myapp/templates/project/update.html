@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add student</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+  </head>
+  <body>
+
+    {% include 'project/navbar.html'  %}
+
+   
+    
+    <!-- Form Section -->
+    <div class="container">
+        <div class="row justify-content-center form-container">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="text-center my-3">Update student</h1>
+                        <form action="/project/doupdate/{{std.id}}" method="POST">
+                            {% csrf_token %} 
+                            <div class="form-group">
+                                <label for="roll">Roll</label>
+                                <input name="std_roll"  type="text" id="roll" class="form-control" placeholder="Enter your Roll" required value="{{std.roll}}" >
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input name="std_name" type="text" id="name" class="form-control" placeholder="Enter your name" required value="{{std.name}}" >
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input name="std_email" type="email" id="email" class="form-control" placeholder="Enter your Email" required value="{{std.email}}" >
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea name="std_address" id="address" class="form-control" placeholder="Enter your address" required>{{std.address}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">phone</label>
+                                <input name="std_phone" id="phone" type= "text" class="form-control" placeholder="Enter your mobile" required value="{{std.phone}}" >
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Update Student</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
